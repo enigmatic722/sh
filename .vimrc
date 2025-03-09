@@ -1,14 +1,9 @@
 "leader
 let g:mapleader = " "
-" nnoremap , \
-" nnoremap ' ,
 
 let &t_SI.="\e[5 q" "SI = INSERT mode
 let &t_SR.="\e[4 q" "SR = REPLACE mode
 let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
-
-"set clipboard+=unnamedplus "for linux clipboard
-"set shell=powershell
 
 "set nocompatible
 "filetype plugin on
@@ -23,10 +18,10 @@ set omnifunc=syntaxcomplete#Complete
 set suffixesadd=.java
 set path+=**
 set nu rnu
-"set smartindent
 set tabstop=4
 set shiftwidth=4
 set expandtab
+"set smartindent
 
 " nnoremap <leader>s :set smartcase!<cr>
 set formatoptions-=cro
@@ -35,23 +30,33 @@ autocmd BufNewFile,BufRead * set formatoptions-=cro
 autocmd BufRead,BufNewFile *.jsp set filetype=html
 autocmd BufRead *.class set syntax=java
 autocmd! FileType json set filetype=jsonc
+autocmd! FileType log set filetype=log
 autocmd! FileType vim setlocal commentstring=\"\ %s
 autocmd! FileType dosini setlocal commentstring=#\ %s
 autocmd! FileType sh setlocal commentstring=#\ %s
+autocmd! FileType nginx setlocal commentstring=#\ %s
 "autocmd! BufNewFile *.java exe \"normal Opublic class \" . expand('%:t:r')
-autocmd! BufNewFile *.java exe "normal ipublic class " . expand('%:t:r') . " {\n\n}\<Esc>gg"
-autocmd! BufRead *.java if getfsize(expand('%'))==0|exe "normal ipublic class " . expand('%:t:r') . " {\n\n}\<Esc>gg"|endif
 
 nnoremap <C-n> :set rnu!<cr>
+nnoremap <leader>n :set nu! rnu!<cr>
 nnoremap - 3<C-w><
 nnoremap = 3<C-w>>
 nnoremap + 3<C-w>+
 nnoremap _ 3<C-w>-
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
+cnoremap <C-a>  <Home>
+cnoremap <C-d>  <Del>
+cnoremap <C-e>  <End>
+cnoremap <C-l>  <Right>
+cnoremap <C-h>  <Left>
+cnoremap <C-j>  <Down>
+cnoremap <C-k>  <Up>
 
-nnoremap <C-s> :tabe $MYVIMRC<cr>
-nnoremap <leader>' ``
+nnoremap <S-tab> gT
+nnoremap <tab>   gt
+
+nnoremap <leader>; :tabe $MYVIMRC<cr>
 nnoremap <leader>z :source $MYVIMRC<cr>
 nnoremap <enter> %
 vnoremap <enter> %
@@ -71,7 +76,7 @@ nnoremap <leader>7 7gt
 nnoremap <leader>8 8gt
 nnoremap <leader>9 :tabl<CR>
 nnoremap <leader>t :tabnew 
-nnoremap <leader>; :tabl<CR>
+" nnoremap <leader>; :tabl<CR>
 nnoremap <A-left> <C-o>
 nnoremap <A-right> <C-i>
 nnoremap <leader>/ /\<\>/<Left><Left><Left>
@@ -152,8 +157,6 @@ vnoremap > >gv
 
 nnoremap <leader>g :vimgrep /<c-r><c-w>/j **/*.{c,h,txt} <bar> :copen <CR>
 " inoremap jk <ESC>
-nnoremap <Tab> :><CR>
-nnoremap <S-Tab> :<<CR>
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 noremap <C-k> :cp<cr>
@@ -163,6 +166,17 @@ nnoremap <space> :.cc<cr><C-w>w
 command! -nargs=1 Gp vimgrep <q-args> % | copen
 " cursor move gseries in long line
 vnoremap <End> g_
+
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-e> <End>
+inoremap <C-a> <Home>
+inoremap <C-f> <space>-> 
+inoremap <C-g> <space>=> 
+
+
 "
 " tab series
 "command T -nargs=1 :tabnew +<args>buf
@@ -181,7 +195,6 @@ nnoremap <leader>f /\<\>/<Left><Left><Left>
 
 ""Replace Commands
 vnoremap <C-r> "hy:%s/<C-r>h//gcI<left><left><left>
-"nnoremap cpq ggw"*yt;o.<c-r>=expand('%:r')<Cr><Esc>^P^"*y$u
 nnoremap cpq gg^w"*yt;:let @+ .= ".".expand("%:r")<cr>
 nnoremap cpp i<space><c-r>=expand('%:r')<Cr><space>
 nnoremap cpd :let @+ = expand("%:p:h")<cr>
@@ -228,15 +241,11 @@ function! Hcc(...)
     endif
 endfunction
 
-
-"nnoremap <S-s> :sort // r<CR> 
-"nnoremap <C-s> :sort! // r<CR> 
-
 command! -nargs=1 D %s/<args>//gcI
 "command! -nargs=1 Db ,$s/<args>//gcI
 
 vnoremap R :s///g<left><left><left>
-nnoremap <leader>r :%s//<C-r><C-w>/gcI<left><left><left><left>
+nnoremap <leader>r :%s///gcI<left><left><left><left>
 nnoremap R :R args 
 command! -nargs=+ R call R (<f-args>)
 function! R(arg0, ...)
@@ -371,7 +380,6 @@ nnoremap tco :BufCurOnly<cr>
 
 
 ":tabm[ove] 0 => 將當前 tab 視窗順序移動到順序 0
-"
 ":tabc[lose] => 關閉該 tab 視窗
 ":.+1,$tabdo :tabc
 ":.-1,0tabdo :tabc
@@ -389,6 +397,7 @@ endfunction
 set runtimepath^=~/.vim/bundle/commentary
 set runtimepath^=~/.vim/bundle/delimitMate
 set runtimepath^=~/.vim/bundle/vim-sneak
+set runtimepath^=~/.vim/bundle/vim-log-highlighting
 
 let g:delimitMate_expand_cr=1
 let g:delimitMate_expand_space=1
@@ -409,19 +418,12 @@ if (has("autocmd") && !has("gui_running"))
 endif
 colorscheme onedark
 
-"let g:dracula_colorterm = 0
-"colorscheme dracula
-
 "" sneak
 "let g:sneak#label = 1
-nnoremap f <Plug>Sneak_f
-nnoremap F <Plug>Sneak_F
-"map t <Plug>Sneak_t
-"map T <Plug>Sneak_T
-nnoremap ' <Plug>Sneak_s
-nnoremap " <Plug>Sneak_S
-
-vnoremap s s
+map f <Plug>Sneak_f
+map F <Plug>Sneak_F
+map ' <Plug>Sneak_s
+map " <Plug>Sneak_S
 
 "" easy-motion
 let g:EasyMotion_do_mapping = 0
