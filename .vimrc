@@ -511,6 +511,10 @@ cnoremap <C-e> <C-r>=escape('','\')<left><left><left><left><left><left>
 inoremap <C-e> <C-r>=escape('','\')<left><left><left><left><left><left>
 
 
+" tabline
+"TabLine only file name
+set showtabline=2
+""""""""""""""" tabline
 set tabline=%!MyTabLine()
 function MyTabLine()
   let s = '' " complete tabline goes here
@@ -578,3 +582,114 @@ function MyTabLine()
   endif
   return s
 endfunction
+
+
+" terminal
+set shell=pwsh
+set shellcmdflag=-command
+set shellquote=\"
+set shellxquote=
+
+nnoremap <leader>; :term<CR>
+nnoremap <leader>s :term<CR>
+nnoremap <leader>v :vert term<cr>
+nnoremap <leader>t :tab term<cr>
+nnoremap <leader>b :ls<cr>:vert sb
+nnoremap <C-s> :sb pwsh<CR>
+nmap <C-q> <C-w>
+tnoremap <C-s> <C-q>:hide<CR>
+
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+
+nnoremap <C-w>r <C-w>=
+nnoremap <C-w><C-r> <C-w>=
+nnoremap <C-w>m <C-w>_
+nnoremap <C-w><C-m> <C-w>_
+
+nnoremap <C-q>1 <C-w>:tabr<CR>
+nnoremap <C-q>2 <C-w>2gt
+nnoremap <C-q>3 <C-w>3gt
+nnoremap <C-q>4 <C-w>4gt
+nnoremap <C-q>5 <C-w>5gt
+nnoremap <C-q>6 <C-w>6gt
+nnoremap <C-q>7 <C-w>7gt
+nnoremap <C-q>8 <C-w>8gt
+nnoremap <C-q>9 <C-w>:tabl<CR>
+
+nnoremap <C-q>d <C-w>T
+
+nnoremap - 3<C-w><
+nnoremap = 3<C-w>>
+nnoremap + 3<C-w>+
+nnoremap _ 3<C-w>-
+
+nnoremap <up> <C-w>3+
+nnoremap <down> <C-w>3-
+nnoremap <left> <C-w>3<
+nnoremap <right> <C-w>3>
+nnoremap <C-w>s :tab term<cr>
+
+nnoremap <C-q>] <C-q>gt
+nnoremap <C-q><C-]> <C-q>gt
+nnoremap <C-q>[ <C-q>gT
+nnoremap <C-q><C-[> <C-q>gT
+
+set termwinkey=<C-q>
+tnoremap <Esc><Esc> <C-q>N
+tnoremap <C-q>r <C-q>=
+tnoremap <C-q><C-r> <C-q>=
+tnoremap <C-q>m <C-q>_
+tnoremap <C-q><C-m> <C-q>_
+tnoremap <C-q>i <C-q>\|
+tnoremap <C-q><C-i> <C-q>\|
+
+tnoremap <up> <C-q>3+
+tnoremap <down> <C-q>3-
+tnoremap <left> <C-q>3<
+tnoremap <right> <C-q>3>
+
+tnoremap <C-q>s <C-q>:term<cr>
+tnoremap <C-q><C-s> <C-q>:term<cr>
+tnoremap <C-q>v <C-q>:vert term<cr>
+tnoremap <C-q><C-v> <C-q>:vert term<cr>
+tnoremap <C-q>n <C-q>:tab term<cr>
+tnoremap <C-q><C-n> <C-q>:tab term<cr>
+tnoremap <C-q>d <C-q>T
+tnoremap <C-q>q <C-q>:q!<cr>
+tnoremap <C-q><C-q> <C-q>:q!<cr>
+tnoremap <C-q>x <C-q>:qa!<cr>
+
+tnoremap <C-q>o <C-q>:ls<cr>:sb
+tnoremap <C-q><C-o> <C-q>:ls<cr>:sb
+tnoremap <C-q>; <C-q>:ls<cr>:vert sb
+
+tnoremap <C-q>] <C-q>gt
+tnoremap <C-q><C-]> <C-q>gt
+tnoremap <C-q>[ <C-q>gT
+tnoremap <C-q><C-[> <C-q>gT
+
+tnoremap <C-q>q <C-q>:q!<cr>
+tnoremap <C-q><C-q> <C-q>:q!<cr>
+tnoremap <C-q>1 <C-q>:tabr<CR>
+tnoremap <C-q>2 <C-q>2gt
+tnoremap <C-q>3 <C-q>3gt
+tnoremap <C-q>4 <C-q>4gt
+tnoremap <C-q>5 <C-q>5gt
+tnoremap <C-q>6 <C-q>6gt
+tnoremap <C-q>7 <C-q>7gt
+tnoremap <C-q>8 <C-q>8gt
+tnoremap <C-q>9 <C-q>:tabl<cr>
+
+" editor 
+tnoremap <C-q>e <C-q>:vnew editor \| setlocal buftype=nofile<cr>
+tnoremap <C-q><C-e> <C-q>:vnew editor \| setlocal buftype=nofile<cr>
+nnoremap <C-q>' <C-w>:hide<CR>
+tnoremap <C-q>' <C-q>:vert sb editor<CR>
+nnoremap <C-q>/ <C-w>:hide<CR>
+nnoremap <C-q><C-_> <C-w>:hide<CR>
+tnoremap <C-q>/ <C-q>:sb editor<CR>
+tnoremap <C-q><C-_> <C-q>:sb editor<CR>
+"vim -c ':term ++curwin'
