@@ -1,6 +1,29 @@
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+    . /etc/bashrc
+fi
+
+# User specific environment
+if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
+    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+fi
+export PATH
+
+# Uncomment the following line if you don't like systemctl's auto-paging feature:
+# export SYSTEMD_PAGER=
+
+# User specific aliases and functions
+if [ -d ~/.bashrc.d ]; then
+    for rc in ~/.bashrc.d/*; do
+        if [ -f "$rc" ]; then
+            . "$rc"
+        fi
+    done
+fi
+
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color|*-256color) color_prompt=yes;;
+xterm-color | *-256color) color_prompt=yes ;;
 esac
 
 if [ "$color_prompt" = yes ]; then
@@ -11,7 +34,7 @@ fi
 
 readline-brackets() {
     READLINE_LINE="${READLINE_LINE:0:$READLINE_POINT}${1}${READLINE_LINE:$READLINE_POINT}"
-    ((READLINE_POINT+=1))
+    ((READLINE_POINT += 1))
 }
 
 bind -m vi-insert -x '"\"" : "readline-brackets \"\""'
@@ -21,7 +44,7 @@ bind -m vi-insert -x '"(" : "readline-brackets \(\)"'
 bind -m vi-insert -x '"[" : "readline-brackets []"'
 bind -m vi-insert -x '"{" : "readline-brackets {}"'
 
-p () {
+p() {
     bind -m vi-insert -x '"\"" : "readline-brackets \""'
     bind -m vi-insert -x $'"\047" : "readline-brackets \\\047"' # SINGLE QUOTE
     bind -m vi-insert -x '"<" : "readline-brackets \<"'
@@ -30,7 +53,7 @@ p () {
     bind -m vi-insert -x '"{" : "readline-brackets {"'
 }
 
-np () {
+np() {
     bind -m vi-insert -x '"\"" : "readline-brackets \"\""'
     bind -m vi-insert -x $'"\047" : "readline-brackets \\\047\\\047"' # SINGLE QUOTE
     bind -m vi-insert -x '"<" : "readline-brackets \<\>"'
@@ -44,6 +67,7 @@ export VISUAL="vim"
 export EDITOR="$VISUAL"
 
 # alias vi='busybox vi'
+alias :q="exit"
 alias als='vim ~/.bashrc'
 alias vrc='vim ~/.vimrc'
 alias re='source ~/.bashrc'
@@ -60,9 +84,6 @@ alias v='vim'
 alias sv='sudoedit'
 alias hosts='sudoedit /etc/hosts'
 alias nconf='v /etc/nginx/nginx.conf'
-
-alias dssh='docker exec -it d2 /etc/init.d/ssh restart'
-alias dkssh='docker start bf'
 
 bind -m vi-command 'z: clear-screen'
 bind -m vi-insert 'Control-l: clear-screen'
@@ -93,73 +114,70 @@ bind "set show-all-if-ambiguous on"
 bind "set menu-complete-display-prefix on"c
 
 j() {
-  fg %$1
+    fg %$1
 }
 
 cd() {
-  #builtin cd $@
-  command cd $@ && echo " " && ll
+    #builtin cd $@
+    command cd $@ && echo " " && ll
 }
 
-pt(){
-  export whoami=whoami
-  PS1="$(whoami)@\${PWD##*/}\> "
+pt() {
+    export whoami=whoami
+    PS1="$(whoami)@\${PWD##*/}\> "
 }
 # 當前目錄 顯示多個檔名的路徑(包含檔名)
-sf(){
-  for file in "$@"; do
-    s $(basename $file)
-    #basename $file
-    #dirname $(s $(basename $file))
-  done
+sf() {
+    for file in "$@"; do
+        s $(basename $file)
+        #basename $file
+        #dirname $(s $(basename $file))
+    done
 }
 
 # 當前目錄 顯示多個檔名的路徑(不包含檔名)
-sfd(){
-  echo " "
-  for file in "$@"; do
-    basename $file
-    s $(basename $file) | xargs -I {} dirname {}
-  done
+sfd() {
+    echo " "
+    for file in "$@"; do
+        basename $file
+        s $(basename $file) | xargs -I {} dirname {}
+    done
 }
 
 # 當前目錄 依據檔名備份多個檔
 # search & bak
 # args[]: multiple filenames, seperate by spaces
-sbak(){
-  for file in "$@"; do
-    bakDate=$(date "+%Y-%m-%d_%H%M%S")
-    targetPath=$(s $(basename $file))
-    echo $targetPath.bak@$bakDate
-    cp $targetPath $targetPath.bak@$bakDate
-  done
+sbak() {
+    for file in "$@"; do
+        bakDate=$(date "+%Y-%m-%d_%H%M%S")
+        targetPath=$(s $(basename $file))
+        echo $targetPath.bak@$bakDate
+        cp $targetPath $targetPath.bak@$bakDate
+    done
 }
 
 # 當前目錄 依據檔名取代多個檔
-srep(){
-  for file in "$@"; do
-    targetPath=$(s $(basename $file))
-    echo $targetPath
-    cp $file $targetPath
-  done
+srep() {
+    for file in "$@"; do
+        targetPath=$(s $(basename $file))
+        echo $targetPath
+        cp $file $targetPath
+    done
 }
 
 # find
 # args: date, filename
-fb () {
-  find $PWD -type f ! -newermt "$2" -name "$1" -printf "%T@ %Tc %p\n" | sort -n
+fb() {
+    find $PWD -type f ! -newermt "$2" -name "$1" -printf "%T@ %Tc %p\n" | sort -n
 }
 
 # find & rm before date
 # args: date, filename
-frmb () {
-  find $PWD -type f ! -newermt "$2" -name "$1" -printf "%T@ %Tc %p\n" | sort -n && find . -type f ! -newermt "$2" -name "$1" -exec rm -f {} \;
+frmb() {
+    find $PWD -type f ! -newermt "$2" -name "$1" -printf "%T@ %Tc %p\n" | sort -n && find . -type f ! -newermt "$2" -name "$1" -exec rm -f {} \;
 }
 
 # mkdir()
 # {
-#   command mkdir -p $1 
+#   command mkdir -p $1
 # }
-
-
-

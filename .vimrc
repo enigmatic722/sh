@@ -75,7 +75,7 @@ nnoremap <leader>6 6gt
 nnoremap <leader>7 7gt
 nnoremap <leader>8 8gt
 nnoremap <leader>9 :tabl<CR>
-nnoremap <leader>t :tabnew 
+nnoremap <C-t> :tabnew 
 " nnoremap <leader>; :tabl<CR>
 nnoremap <A-left> <C-o>
 nnoremap <A-right> <C-i>
@@ -165,7 +165,7 @@ nnoremap <C-l> :.cc<cr>
 nnoremap <space> :.cc<cr><C-w>w
 command! -nargs=1 Gp vimgrep <q-args> % | copen
 " cursor move gseries in long line
-vnoremap <End> g_
+vnoremap g; g_
 
 inoremap <C-h> <Left>
 inoremap <C-l> <Right>
@@ -420,10 +420,10 @@ colorscheme onedark
 
 "" sneak
 "let g:sneak#label = 1
-map f <Plug>Sneak_f
-map F <Plug>Sneak_F
-map ' <Plug>Sneak_s
-map " <Plug>Sneak_S
+nmap f <Plug>Sneak_f
+nmap F <Plug>Sneak_F
+nmap ' <Plug>Sneak_s
+nmap " <Plug>Sneak_S
 
 "" easy-motion
 let g:EasyMotion_do_mapping = 0
@@ -507,8 +507,8 @@ function! s:VSetSearch()
     let @s = temp
 endfunction
 
-cnoremap <C-e> <C-r>=escape('','\')<left><left><left><left><left><left>
-inoremap <C-e> <C-r>=escape('','\')<left><left><left><left><left><left>
+" cnoremap <C-e> <C-r>=escape('','\')<left><left><left><left><left><left>
+" inoremap <C-e> <C-r>=escape('','\')<left><left><left><left><left><left>
 
 
 " tabline
@@ -585,41 +585,42 @@ endfunction
 
 
 " terminal
-set shell=pwsh
+set shell=bash
 set shellcmdflag=-command
 set shellquote=\"
 set shellxquote=
 
-nnoremap <leader>; :term<CR>
+" nnoremap <leader>; :term<CR>
 nnoremap <leader>s :term<CR>
 nnoremap <leader>v :vert term<cr>
 nnoremap <leader>t :tab term<cr>
 nnoremap <leader>b :ls<cr>:vert sb
-nnoremap <C-s> :sb pwsh<CR>
-nmap <C-q> <C-w>
-tnoremap <C-s> <C-q>:hide<CR>
+nnoremap <leader>o :ls<cr>:sb
+nnoremap <C-q> :sb pwsh<CR>
+nmap <C-s> <C-w>
+tnoremap <C-q> <C-s>:hide<CR>
 
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
+" nnoremap <C-h> <C-w>h
+" nnoremap <C-l> <C-w>l
+" nnoremap <C-j> <C-w>j
+" nnoremap <C-k> <C-w>k
 
 nnoremap <C-w>r <C-w>=
 nnoremap <C-w><C-r> <C-w>=
 nnoremap <C-w>m <C-w>_
 nnoremap <C-w><C-m> <C-w>_
 
-nnoremap <C-q>1 <C-w>:tabr<CR>
-nnoremap <C-q>2 <C-w>2gt
-nnoremap <C-q>3 <C-w>3gt
-nnoremap <C-q>4 <C-w>4gt
-nnoremap <C-q>5 <C-w>5gt
-nnoremap <C-q>6 <C-w>6gt
-nnoremap <C-q>7 <C-w>7gt
-nnoremap <C-q>8 <C-w>8gt
-nnoremap <C-q>9 <C-w>:tabl<CR>
+nnoremap <C-s>1 <C-w>:tabr<CR>
+nnoremap <C-s>2 <C-w>2gt
+nnoremap <C-s>3 <C-w>3gt
+nnoremap <C-s>4 <C-w>4gt
+nnoremap <C-s>5 <C-w>5gt
+nnoremap <C-s>6 <C-w>6gt
+nnoremap <C-s>7 <C-w>7gt
+nnoremap <C-s>8 <C-w>8gt
+nnoremap <C-s>9 <C-w>:tabl<CR>
 
-nnoremap <C-q>d <C-w>T
+nnoremap <C-s>d <C-w>T
 
 nnoremap - 3<C-w><
 nnoremap = 3<C-w>>
@@ -632,64 +633,78 @@ nnoremap <left> <C-w>3<
 nnoremap <right> <C-w>3>
 nnoremap <C-w>s :tab term<cr>
 
-nnoremap <C-q>] <C-q>gt
-nnoremap <C-q><C-]> <C-q>gt
-nnoremap <C-q>[ <C-q>gT
-nnoremap <C-q><C-[> <C-q>gT
+nnoremap <C-s>] <C-s>gt
+nnoremap <C-s><C-]> <C-s>gt
+nnoremap <C-s>[ <C-s>gT
+nnoremap <C-s><C-[> <C-s>gT
 
-set termwinkey=<C-q>
-tnoremap <Esc><Esc> <C-q>N
-tnoremap <C-q>r <C-q>=
-tnoremap <C-q><C-r> <C-q>=
-tnoremap <C-q>m <C-q>_
-tnoremap <C-q><C-m> <C-q>_
-tnoremap <C-q>i <C-q>\|
-tnoremap <C-q><C-i> <C-q>\|
+set termwinkey=<C-s>
+tnoremap <C-j> <Down>
+tnoremap <Esc><Esc> <C-s>N
+tnoremap <C-s>r <C-s>=
+tnoremap <C-s><C-r> <C-s>=
+tnoremap <C-s>m <C-s>_
+tnoremap <C-s><C-m> <C-s>_
+tnoremap <C-s>i <C-s>\|
+tnoremap <C-s><C-i> <C-s>\|
 
-tnoremap <up> <C-q>3+
-tnoremap <down> <C-q>3-
-tnoremap <left> <C-q>3<
-tnoremap <right> <C-q>3>
+tnoremap <C-j> <Down>
 
-tnoremap <C-q>s <C-q>:term<cr>
-tnoremap <C-q><C-s> <C-q>:term<cr>
-tnoremap <C-q>v <C-q>:vert term<cr>
-tnoremap <C-q><C-v> <C-q>:vert term<cr>
-tnoremap <C-q>n <C-q>:tab term<cr>
-tnoremap <C-q><C-n> <C-q>:tab term<cr>
-tnoremap <C-q>d <C-q>T
-tnoremap <C-q>q <C-q>:q!<cr>
-tnoremap <C-q><C-q> <C-q>:q!<cr>
-tnoremap <C-q>x <C-q>:qa!<cr>
+tnoremap <up> <C-s>3+
+tnoremap <down> <C-s>3-
+tnoremap <left> <C-s>3<
+tnoremap <right> <C-s>3>
 
-tnoremap <C-q>o <C-q>:ls<cr>:sb
-tnoremap <C-q><C-o> <C-q>:ls<cr>:sb
-tnoremap <C-q>; <C-q>:ls<cr>:vert sb
+tnoremap <C-s>s <C-s>:term<cr>
+tnoremap <C-s><C-s> <C-s>:term<cr>
+tnoremap <C-s>v <C-s>:vert term<cr>
+tnoremap <C-s><C-v> <C-s>:vert term<cr>
+tnoremap <C-s>n <C-s>:tab term<cr>
+tnoremap <C-s><C-n> <C-s>:tab term<cr>
+tnoremap <C-s>d <C-s>T
+tnoremap <C-s>q <C-s>:q!<cr>
+tnoremap <C-s>z <C-s>:qa!<cr>
+tnoremap <C-s>c <C-s>:qa!<cr>
+tnoremap <C-s><C-q> <C-s>:q!<cr>
+tnoremap <C-s><C-c> <C-s>:qa!<cr>
 
-tnoremap <C-q>] <C-q>gt
-tnoremap <C-q><C-]> <C-q>gt
-tnoremap <C-q>[ <C-q>gT
-tnoremap <C-q><C-[> <C-q>gT
+tnoremap <C-s>o <C-s>:ls<cr>:sb
+tnoremap <C-s><C-o> <C-s>:ls<cr>:sb
+tnoremap <C-s>; <C-s>:ls<cr>:vert sb
 
-tnoremap <C-q>q <C-q>:q!<cr>
-tnoremap <C-q><C-q> <C-q>:q!<cr>
-tnoremap <C-q>1 <C-q>:tabr<CR>
-tnoremap <C-q>2 <C-q>2gt
-tnoremap <C-q>3 <C-q>3gt
-tnoremap <C-q>4 <C-q>4gt
-tnoremap <C-q>5 <C-q>5gt
-tnoremap <C-q>6 <C-q>6gt
-tnoremap <C-q>7 <C-q>7gt
-tnoremap <C-q>8 <C-q>8gt
-tnoremap <C-q>9 <C-q>:tabl<cr>
+tnoremap <C-s>] <C-s>gt
+tnoremap <C-s><C-]> <C-s>gt
+tnoremap <C-s>[ <C-s>gT
+tnoremap <C-s><C-[> <C-s>gT
+
+tnoremap <C-s>1 <C-s>:tabr<CR>
+tnoremap <C-s>2 <C-s>2gt
+tnoremap <C-s>3 <C-s>3gt
+tnoremap <C-s>4 <C-s>4gt
+tnoremap <C-s>5 <C-s>5gt
+tnoremap <C-s>6 <C-s>6gt
+tnoremap <C-s>7 <C-s>7gt
+tnoremap <C-s>8 <C-s>8gt
+tnoremap <C-s>9 <C-s>:tabl<cr>
 
 " editor 
-tnoremap <C-q>e <C-q>:vnew editor \| setlocal buftype=nofile<cr>
-tnoremap <C-q><C-e> <C-q>:vnew editor \| setlocal buftype=nofile<cr>
-nnoremap <C-q>' <C-w>:hide<CR>
-tnoremap <C-q>' <C-q>:vert sb editor<CR>
-nnoremap <C-q>/ <C-w>:hide<CR>
-nnoremap <C-q><C-_> <C-w>:hide<CR>
-tnoremap <C-q>/ <C-q>:sb editor<CR>
-tnoremap <C-q><C-_> <C-q>:sb editor<CR>
+tnoremap <C-s>e <C-s>:vnew editor \| setlocal buftype=nofile<cr>
+tnoremap <C-s><C-e> <C-s>:vnew editor \| setlocal buftype=nofile<cr>
+nnoremap <C-s>' <C-w>:hide<CR>
+tnoremap <C-s>' <C-s>:vert sb editor<CR>
+nnoremap <C-s>/ <C-w>:hide<CR>
+nnoremap <C-s><C-_> <C-w>:hide<CR>
+tnoremap <C-s>/ <C-s>:sb editor<CR>
+tnoremap <C-s><C-_> <C-s>:sb editor<CR>
 "vim -c ':term ++curwin'
+
+
+let g:markdown_fenced_languages = ['html', 'js=javascript', 'ruby', 'sh', 'bash']
+
+" syntax match depthOne "^# .*"
+" syntax match depthTwo "^## .*"
+" syntax match depthThree "^### .*"
+" syntax match depthFour "^#### .*"
+
+" hi! link htmlH2 purple
+
