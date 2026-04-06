@@ -1,0 +1,1 @@
+curl -sfL https://get.k3s.io | INSTALL_K3S_BIN_DIR="$TARGET_DIR" INSTALL_K3S_DATA_DIR="$TARGET_DIR/data" INSTALL_K3S_CONFIG_DIR="$TARGET_DIR/etc" --data-dir "$TARGET_DIR/data" K3S_URL=https://192.168.1.122:6443 K3S_TOKEN=K100924f58c72183ad57d9088e47090cd2bba9eded1cce65db5c29bcab02250b8be::server:e515920c74bd1be25fa53d90314a4ce9 sh - --data-dir "$TARGET_DIR/data"
