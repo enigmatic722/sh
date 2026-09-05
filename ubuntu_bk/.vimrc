@@ -10,6 +10,8 @@ let &t_SI.="\e[5 q" "SI = INSERT mode
 let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
 
 " disable commentary new line auto
+
+set clipboard=unnamedplus
 set incsearch
 set vb t_vb=
 set formatoptions-=cro 
@@ -49,14 +51,14 @@ inoremap <rightmouse> <C-r>"
 xnoremap <rightmouse> y
 
 inoremap <middlemouse> <Esc>
-tnoremap <middlemouse> <leftmouse><C-@>N
+tnoremap <middlemouse> <leftmouse><C-g>N
 nnoremap <middlemouse> i
 vnoremap <middlemouse> <Esc>
 
 ""set guitablabel=%t
 ""set tabline=%t
 inoremap <C-s> <C-o>:w<cr>
-nnoremap <C-s> :w<cr>
+" nnoremap <C-s> :w<cr>
 nnoremap <cr> %
 vnoremap <cr> %
 nnoremap - 3<C-w><
@@ -72,7 +74,7 @@ nnoremap <C-j> :cn<cr>
 nnoremap <C-l> :.cc<cr>
 nnoremap <space> :.cc<cr><C-w>w
 command! -nargs=1 Vg vimgrep <q-args> % | copen
-nnoremap <leader>s :vimgrep  % <bar> :copen<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+" nnoremap <leader>s :vimgrep  % <bar> :copen<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 "nnoremap <leader>f :vimgrep /<c-r><c-w>/j **/*.{c,h,txt} <bar> :copen <CR>
 " nnoremap <leader>g :vimgrep /<c-r><c-w>/j **/*. <bar> :copen<Left><Left><Left><Left><Left><Left><Left><Left><Left>
 nnoremap <leader>g :vimgrep // % <bar> :copen<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
@@ -128,6 +130,15 @@ endfunction
 " cnoremap <C-e> <C-r>=escape('','\')<left><left><left><left><left><left>
 " inoremap <C-e> <C-r>=escape('','\')<left><left><left><left><left><left>
 
+if has("autocmd")
+  autocmd BufReadPost *
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
+endif
+
+
+" autocmd TextYankPost * if exists('$TMUX') | call system('tmux load-buffer -', @") | endif
 autocmd VimEnter * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd BufNewFile,BufRead * setlocal formatoptions-=ro
 ""autocmd BufRead,BufNewFile *.jsp set filetype=html
@@ -145,17 +156,19 @@ au BufRead,BufNewFile *log* set filetype=log
 au BufRead,BufNewFile secure set filetype=log
 au BufRead,BufNewFile *sql set filetype=SQL
 au BufRead,BufNewFile *bat set filetype=dosbatch
-au BufRead,BufNewFile *tmprc set filetype=sh
+au BufRead,BufNewFile *bash* set filetype=bash
 au BufRead,BufNewFile .termrc set filetype=vim
-au BufRead,BufNewFile *dirrc set filetype=sh
-au BufRead,BufNewFile *.defs set filetype=sh
+au BufRead,BufNewFile *dirrc set filetype=bash
+au BufRead,BufNewFile *.defs set filetype=bash
 au BufRead,BufNewFile *.conf set filetype=config
 au BufRead,BufNewFile *.properties set filetype=config
+au BufRead,BufNewFile config set filetype=dosini
 au BufRead,BufNewFile *.nginx set ft=nginx
 au BufRead,BufNewFile */etc/nginx/* set ft=nginx
 au BufRead,BufNewFile */usr/local/nginx/conf/* set ft=nginx
 au BufRead,BufNewFile nginx.conf set ft=nginx
 au BufRead,BufNewFile *.nft,nftables.conf setfiletype nftables
+au BufRead,BufNewFile .tmux.conf set filetype=bash
 
 
 " commentary
@@ -214,7 +227,7 @@ set statusline+=%F
 "set virtualedit=block # visual block
 "" always yank to clip
 " set clipboard=unnamed
-set scrolloff=3
+set scrolloff=5
 set iskeyword+=\$
 syntax on
 " autocmd BufReadPost * if @% !~# '\.git[\/\\]COMMIT_EDITMSG$' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
@@ -348,9 +361,9 @@ inoremap <C-f>. <Space>-><Space>
 inoremap <C-f>> <Space>=><Space>
 " inoremap <C-f>, <> <Left>
 inoremap <C-f>[ 「」<Left>
-inoremap <C-@>[ {}<Left>
+inoremap <C-g>[ {}<Left>
 inoremap <C-f>, <><Left>
-inoremap <C-@>\| \|\|<Left>
+inoremap <C-g>\| \|\|<Left>
 inoremap <C-f>\| \|\|<Left>
 
 "close others
@@ -360,9 +373,8 @@ nnoremap <leader>/ /\<\>/<Left><Left><Left>
 "nnoremap f /\<\><Left><Left>
 command! -nargs=1 F normal! /\<<args>\>/<CR>
 
-set foldenable
-nnoremap <silent> <leader>f :setlocal foldexpr=getline(v:lnum)=~@/?0:1 foldmethod=expr foldlevel=0 foldminlines=0<CR>zM
-" nnoremap <silent> <leader>f :setlocal foldexpr=(getline(v:lnum)=~@/)?0:(getline(v:lnum-1)=~@/)\\|\\|(getline(v:lnum+1)=~@/)?1:2 foldmethod=expr foldlevel=0 foldminlines=0 foldcolumn=2<CR>zM
+" search fold
+nnoremap <silent> <leader>f :setlocal foldexpr=getline(v:lnum)=~@/?0:1 foldmethod=expr foldlevel=0 foldminlines=0<CR> 
 nnoremap <silent> <leader>z zR
 
 ""Replace Commands
@@ -597,21 +609,28 @@ nnoremap <Leader>e :Lexplore %:p:h<CR>
 ""augroup END
 
 ""Plugin
-set runtimepath^=~/.vim/bundle/delimitMate
-set runtimepath^=~/.vim/bundle/vim-commentary
-set runtimepath^=~/.vim/bundle/vim-log-highlighting
-set runtimepath^=~/.vim/bundle/vim-sneak
-set runtimepath^=~/.vim/bundle/python-syntax
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-set runtimepath^=~/.vim/bundle/rainbow-csv
-set runtimepath^=~/.vim/bundle/vim-airline
-set runtimepath^=~/.vim/bundle/vim-airline-themes
-set runtimepath^=~/.vim/bundle/vim-nftables
-set runtimepath^=~/.vim/bundle/nerdtree.vim
+call plug#begin()
+Plug 'Raimondi/delimitMate'
+Plug 'tpope/vim-commentary'
+Plug 'mtdl9/vim-log-highlighting'
+Plug 'justinmk/vim-sneak'
+call plug#end()
+
+"set runtimepath^=~/.vim/bundle/delimitMate
+"set runtimepath^=~/.vim/bundle/vim-commentary
+"set runtimepath^=~/.vim/bundle/vim-log-highlighting
+"set runtimepath^=~/.vim/bundle/vim-sneak
+"set runtimepath^=~/.vim/bundle/python-syntax
+"set runtimepath^=~/.vim/bundle/ctrlp.vim
+"set runtimepath^=~/.vim/bundle/rainbow-csv
+"set runtimepath^=~/.vim/bundle/vim-airline
+"set runtimepath^=~/.vim/bundle/vim-airline-themes
+"set runtimepath^=~/.vim/bundle/vim-nftables
+"set runtimepath^=~/.vim/bundle/nerdtree.vim
 
 nnoremap <leader>e :NERDTreeToggle<CR>
-tnoremap <C-@>e <C-@>:NERDTreeToggle<CR>
-nnoremap <C-@>e :NERDTreeToggle<CR>
+tnoremap <C-g>e <C-g>:NERDTreeToggle<CR>
+nnoremap <C-g>e :NERDTreeToggle<CR>
 let NERDTreeMapOpenInTab='<ENTER>'
 let g:NERDTreeMapActivateNode = 'l'
 nmap <right> l
@@ -767,6 +786,7 @@ ab pcl public class
 " shortcut
 command! Als tabe ~/.bashrc
 command! Alsdir tabe ~/.dirrc
+command! Ip /\d\{1,3}\.\d\{1,3}\.\d\{1,3}\.\d\{1,3}
 
 " selection count
 set showcmd
@@ -785,29 +805,29 @@ set shellcmdflag=-c
 
 
 " nnoremap <leader>s :term<CR>
-" nnoremap <silent> <leader>s :term<cr><C-@>:file <c-r>="bash".bufnr("%")<cr><cr>
+" nnoremap <silent> <leader>s :term<cr><C-g>:file <c-r>="bash".bufnr("%")<cr><cr>
 " nnoremap <leader>v :vert term<cr>
-nnoremap <silent> <leader>v :vert term<cr><C-@>:file <c-r>="bash".bufnr("%")<cr><cr>
+nnoremap <silent> <leader>v :vert term<cr><C-g>:file <c-r>="bash".bufnr("%")<cr><cr>
 
 nnoremap <leader>t :tab term<cr>
 " nnoremap <C-q> :sb bash2<CR>
-" tnoremap <expr> <C-q> bufname("%") == 'bash2' ? '<C-@>:hide<CR>' : '<C-@>:sb bash2<cr>'
-" nnoremap <expr> <C-q> bufexists("bash2") == 1 ? ':sb bash2<CR>' : ':term<cr><C-@>:file bash2<cr><cr>'
-" tnoremap <expr> <C-q> bufname("%") == 'bash2' ? '<C-@>:hide<CR>' : '<C-@>:sb bash2<cr>'
-" nnoremap <expr> <C-q> bufexists("bash") == 1 ? ':sb bash \| 18wincmd _<CR>' : ':term ++rows=18<cr><C-@>:file bash<cr><cr>'
-nnoremap <expr> <C-q> bufwinnr("bash") != -1 ? ':call win_gotoid(bufwinid("bash")) \| <C-@>:hide<cr>' : (bufexists("bash") == 1 ? ':bo sb bash \| 18wincmd _<CR>' : ':bo term ++rows=18<cr><C-@>:file bash<cr>')
-tnoremap <expr> <C-q> bufname("%") == 'bash' ? '<C-@>:hide<CR>' : '<C-@>:bo sb bash<cr>'
-" nnoremap <expr> <C-s> bufexists("!bash") == 1 ? ':vert sb !bash<cr>' : ':vert term<cr><C-@>:file "!bash"<cr><cr>'
-" tnoremap <expr> <C-s> bufname("%") == '!bash' ? '<C-@>:hide<CR>' : '<C-@>:vert sb !bash<cr>'
-" tnoremap <C-q> <C-@>:hide<CR>
+" tnoremap <expr> <C-q> bufname("%") == 'bash2' ? '<C-g>:hide<CR>' : '<C-g>:sb bash2<cr>'
+" nnoremap <expr> <C-q> bufexists("bash2") == 1 ? ':sb bash2<CR>' : ':term<cr><C-g>:file bash2<cr><cr>'
+" tnoremap <expr> <C-q> bufname("%") == 'bash2' ? '<C-g>:hide<CR>' : '<C-g>:sb bash2<cr>'
+" nnoremap <expr> <C-q> bufexists("bash") == 1 ? ':sb bash \| 18wincmd _<CR>' : ':term ++rows=18<cr><C-g>:file bash<cr><cr>'
+nnoremap <expr> <C-q> bufwinnr("bash") != -1 ? ':call win_gotoid(bufwinid("bash")) \| <C-g>:hide<cr>' : (bufexists("bash") == 1 ? ':bo sb bash \| 18wincmd _<CR>' : ':bo term ++rows=18<cr><C-g>:file bash<cr>')
+tnoremap <expr> <C-q> bufname("%") == 'bash' ? '<C-g>:hide<CR>' : '<C-g>:bo sb bash<cr>'
+" nnoremap <expr> <C-g> bufexists("!bash") == 1 ? ':vert sb !bash<cr>' : ':vert term<cr><C-g>:file "!bash"<cr><cr>'
+" tnoremap <expr> <C-g> bufname("%") == '!bash' ? '<C-g>:hide<CR>' : '<C-g>:vert sb !bash<cr>'
+" tnoremap <C-q> <C-g>:hide<CR>
 
-tnoremap <C-@>m <C-@>:hide<CR>
-tnoremap <C-@><C-m> <C-@>:hide<CR>
+tnoremap <C-g>m <C-g>:hide<CR>
+tnoremap <C-g><C-m> <C-g>:hide<CR>
 
-nnoremap <C-@><space> :<BS>
-nnoremap <C-@><C-@> :<BS>
+nnoremap <C-g><space> :<BS>
+nnoremap <C-g><C-g> :<BS>
 
-nmap <C-@> <C-w>
+nmap <C-g> <C-w>
 
 nnoremap <C-w>r <C-w>=
 nnoremap <C-w><C-r> <C-w>=
@@ -817,27 +837,27 @@ nnoremap <C-w><C-m> :hide<CR>
 " nnoremap <c-w>; :vert sbnext<cr>
 nnoremap <C-w>; :ls<cr>:vert sb
 nnoremap <C-w>' :ls<cr>:sb
-" tnoremap <C-@>' <C-@>:ls<cr>:sb
-" nnoremap <C-s> :vert sbnext<cr>
-" nnoremap <C-s> :vert sb bash<cr>
+" tnoremap <C-g>' <C-g>:ls<cr>:sb
+" nnoremap <C-g> :vert sbnext<cr>
+" nnoremap <C-g> :vert sb bash<cr>
 nnoremap <C-w>: :sbnext<cr>
 nnoremap <C-w>v :vert term<cr>
 nnoremap <C-w><C-v> :vert term<cr>
 nnoremap <C-w>s :term<cr>
-nnoremap <C-w><C-@> :term<cr>
+nnoremap <C-w><C-g> :term<cr>
 nnoremap <C-w>w :tabclose<cr>
 
-nnoremap <C-@>1 <C-w>:tabr<CR>
-nnoremap <C-@>2 <C-w>2gt
-nnoremap <C-@>3 <C-w>3gt
-nnoremap <C-@>4 <C-w>4gt
-nnoremap <C-@>5 <C-w>5gt
-nnoremap <C-@>6 <C-w>6gt
-nnoremap <C-@>7 <C-w>7gt
-nnoremap <C-@>8 <C-w>8gt
-nnoremap <C-@>9 <C-w>:tabl<CR>
+nnoremap <C-g>1 <C-w>:tabr<CR>
+nnoremap <C-g>2 <C-w>2gt
+nnoremap <C-g>3 <C-w>3gt
+nnoremap <C-g>4 <C-w>4gt
+nnoremap <C-g>5 <C-w>5gt
+nnoremap <C-g>6 <C-w>6gt
+nnoremap <C-g>7 <C-w>7gt
+nnoremap <C-g>8 <C-w>8gt
+nnoremap <C-g>9 <C-w>:tabl<CR>
 
-nnoremap <C-@>d <C-w>T
+nnoremap <C-g>d <C-w>T
 
 nnoremap - 3<C-w><
 nnoremap = 3<C-w>>
@@ -856,21 +876,21 @@ nnoremap <C-w><C-[> gT
 
 inoremap <C-\> \|\|<Left>
 
-set termwinkey=<C-@>
+set termwinkey=<C-g>
 tnoremap <C-j> <C-j>
 tnoremap <C-j> <Down>
-" tnoremap <Esc><Esc> <C-@>N
-tnoremap <C-@>r <C-@>=
-tnoremap <C-@><C-r> <C-@>=
-" tnoremap <C-@>m <C-@>_
-" tnoremap <C-@><C-m> <C-@>_
-tnoremap <C-@>i <C-@>\|
-tnoremap <C-@><C-i> <C-@>\|
+" tnoremap <Esc><Esc> <C-g>N
+tnoremap <C-g>r <C-g>=
+tnoremap <C-g><C-r> <C-g>=
+" tnoremap <C-g>m <C-g>_
+" tnoremap <C-g><C-m> <C-g>_
+tnoremap <C-g>i <C-g>\|
+tnoremap <C-g><C-i> <C-g>\|
 
-tnoremap <C-up> <C-@>3+
-tnoremap <C-down> <C-@>3-
-tnoremap <C-left> <C-@>3<
-tnoremap <C-right> <C-@>3>
+tnoremap <C-up> <C-g>3+
+tnoremap <C-down> <C-g>3-
+tnoremap <C-left> <C-g>3<
+tnoremap <C-right> <C-g>3>
 
 execute "set <M-f>=\ef"
 inoremap <M-f> <Esc>ea
@@ -881,55 +901,56 @@ inoremap <M-l> <S-Right>
 execute "set <M-h>=\eh"
 inoremap <M-h> <S-Left>
 
-" tnoremap <C-@>s <C-@>:term<cr>
-" tnoremap <C-@><C-s> <C-@>:term<cr>
+" tnoremap <C-g>s <C-g>:term<cr>
+" tnoremap <C-g><C-g> <C-g>:term<cr>
 
-tnoremap <silent> <C-@>s <C-@>:term<cr><C-@>:file <c-r>="bash".bufnr("%")<cr><cr>
-tnoremap <silent> <C-@><C-s> <C-@>:term<cr><C-@>:file <c-r>="bash".bufnr("%")<cr><cr>
+tnoremap <silent> <C-g>s <C-g>:term<cr><C-g>:file <c-r>="bash".bufnr("%")<cr><cr>
+tnoremap <silent> <C-g><C-g> <C-g>:term<cr><C-g>:file <c-r>="bash".bufnr("%")<cr><cr>
 
-tnoremap <silent> <C-@>v <C-@>:vert term<cr><C-@>:file <c-r>="bash".bufnr("%")<cr><cr>
-tnoremap <silent> <C-@><C-v> <C-@>:vert term<cr><C-@>:file <c-r>="bash".bufnr("%")<cr><cr>
-tnoremap <silent> <C-@>n <C-@>:tab term<cr><C-@>:file <c-r>="bash".bufnr("%")<cr><cr>
-tnoremap <silent> <C-@><C-n> <C-@>:tab term<cr><C-@>:file <c-r>="bash".bufnr("%")<cr><cr>
-tnoremap <C-@>d <C-@>T
-tnoremap <C-@>q <C-@>:q!<cr>
-tnoremap <C-@><C-q> <C-@>:q!<cr>
-tnoremap <C-@>z <C-@>:qa!<cr>
-" tnoremap <C-@>c <C-@>:qa!<cr>
-tnoremap <C-@><C-c> <C-@>:qa!<cr>
+tnoremap <silent> <C-g>v <C-g>:vert term<cr><C-g>:file <c-r>="bash".bufnr("%")<cr><cr>
+tnoremap <silent> <C-g><C-v> <C-g>:vert term<cr><C-g>:file <c-r>="bash".bufnr("%")<cr><cr>
+tnoremap <silent> <C-g>n <C-g>:tab term<cr><C-g>:file <c-r>="bash".bufnr("%")<cr><cr>
+tnoremap <silent> <C-g><C-n> <C-g>:tab term<cr><C-g>:file <c-r>="bash".bufnr("%")<cr><cr>
+tnoremap <C-g>d <C-g>T
+tnoremap <C-g>q <C-g>:q!<cr>
+" tnoremap <expr> <C-q> bufname("%") == 'bash' ? '<C-g>:hide<CR>' : '<C-g>:bo sb bash<cr>'
+tnoremap <C-g><C-q> <C-g>:q!<cr>
+tnoremap <C-g>z <C-g>:qa!<cr>
+" tnoremap <C-g>c <C-g>:qa!<cr>
+tnoremap <C-g><C-c> <C-g>:qa!<cr>
 
-tnoremap <C-@>o <C-@>:ls<cr>:sb
-tnoremap <C-@><C-o> <C-@>:ls<cr>:sb
-" tnoremap <C-s> <C-@>:vert sb bash<cr>
+tnoremap <C-g>o <C-g>:ls<cr>:sb
+tnoremap <C-g><C-o> <C-g>:ls<cr>:sb
+" tnoremap <C-g> <C-g>:vert sb bash<cr>
 
-" tnoremap <C-@>' <C-@>:sbnext<cr>
-tnoremap <C-@>; <C-@>:ls<cr>:vert sb
-tnoremap <C-@>' <C-@>:ls<cr>:sb
+" tnoremap <C-g>' <C-g>:sbnext<cr>
+tnoremap <C-g>; <C-g>:ls<cr>:vert sb
+tnoremap <C-g>' <C-g>:ls<cr>:sb
 
-tnoremap <C-@>] <C-@>gt
-tnoremap <C-@><C-]> <C-@>gt
-tnoremap <C-@>[ <C-@>gT
-tnoremap <C-@><C-[> <C-@>gT
+tnoremap <C-g>] <C-g>gt
+tnoremap <C-g><C-]> <C-g>gt
+tnoremap <C-g>[ <C-g>gT
+tnoremap <C-g><C-[> <C-g>gT
 
-tnoremap <C-@>1 <C-@>:tabr<CR>
-tnoremap <C-@>2 <C-@>2gt
-tnoremap <C-@>3 <C-@>3gt
-tnoremap <C-@>4 <C-@>4gt
-tnoremap <C-@>5 <C-@>5gt
-tnoremap <C-@>6 <C-@>6gt
-tnoremap <C-@>7 <C-@>7gt
-tnoremap <C-@>8 <C-@>8gt
-tnoremap <C-@>9 <C-@>:tabl<cr>
-tnoremap <C-@>/ <C-@>N/
-tnoremap <C-@>? <C-@>N?
+tnoremap <C-g>1 <C-g>:tabr<CR>
+tnoremap <C-g>2 <C-g>2gt
+tnoremap <C-g>3 <C-g>3gt
+tnoremap <C-g>4 <C-g>4gt
+tnoremap <C-g>5 <C-g>5gt
+tnoremap <C-g>6 <C-g>6gt
+tnoremap <C-g>7 <C-g>7gt
+tnoremap <C-g>8 <C-g>8gt
+tnoremap <C-g>9 <C-g>:tabl<cr>
+tnoremap <C-g>/ <C-g>N/
+tnoremap <C-g>? <C-g>N?
 
-tnoremap <C-@><BS> <C-@>N:<BS>i
-nnoremap <C-@><BS> <C-@>N:<BS>i
-tnoremap <C-@><space> <C-@>N
-tnoremap <C-@><C-@> <C-@>N
+tnoremap <C-g><BS> <C-g>N:<BS>i
+nnoremap <C-g><BS> <C-g>N:<BS>i
+tnoremap <C-g><space> <C-g>N
+tnoremap <C-g><C-g> <C-g>N
 
-tnoremap <C-@>p <C-@>""
-tnoremap <C-@><c-p> <C-@>""
+tnoremap <C-g>p <C-g>""
+tnoremap <C-g><c-p> <C-g>""
 
 set ttimeoutlen=0
 
@@ -950,14 +971,14 @@ nnoremap <M-h> :tabm -1 <CR>
 nnoremap <M-l> :tabm +1 <CR>
 
 execute "set <M-e>=\ee"
-tnoremap <M-e> <C-@>:NERDTreeToggle<CR>
+tnoremap <M-e> <C-g>:NERDTreeToggle<CR>
 nnoremap <M-e> :NERDTreeToggle<CR>
 inoremap <M-e> <C-o>:NERDTreeToggle<CR>
 
 execute "set <M-q>=\eq"
-nnoremap <expr> <M-q> bufwinnr("bash") != -1 ? ':call win_gotoid(bufwinid("bash")) \| <C-@>:hide<cr>' : (bufexists("bash") == 1 ? ':bo sb bash \| 18wincmd _<CR>' : ':term ++rows=18<cr><C-@>:file bash<cr>')
-inoremap <expr> <M-q> bufwinnr("bash") != -1 ? '<C-q>:call win_gotoid(bufwinid("bash")) \| <C-@>:hide<cr>' : (bufexists("bash") == 1 ? ':bo sb bash \| 18wincmd _<CR>' : '<C-o>:term ++rows=18<cr><C-@>:file bash<cr>')
-tnoremap <expr> <M-q> bufname("%") == 'bash' ? '<C-@>:hide<CR>' : '<C-@>:bo sb bash<cr>'
+nnoremap <expr> <M-q> bufwinnr("bash") != -1 ? ':call win_gotoid(bufwinid("bash")) \| <C-g>:hide<cr>' : (bufexists("bash") == 1 ? ':bo sb bash \| 18wincmd _<CR>' : ':term ++rows=18<cr><C-g>:file bash<cr>')
+inoremap <expr> <M-q> bufwinnr("bash") != -1 ? '<C-q>:call win_gotoid(bufwinid("bash")) \| <C-g>:hide<cr>' : (bufexists("bash") == 1 ? ':bo sb bash \| 18wincmd _<CR>' : '<C-o>:term ++rows=18<cr><C-g>:file bash<cr>')
+tnoremap <expr> <M-q> bufname("%") == 'bash' ? '<C-g>:hide<CR>' : '<C-g>:bo sb bash<cr>'
 
 nnoremap th :tabm -1 <CR>
 nnoremap tl :tabm +1 <CR>
@@ -986,8 +1007,18 @@ endfunction
 " inoremap [B <C-o><C-w>j
 
 
-" tnoremap [D <C-@>h
-" tnoremap [C <C-@>l
-" tnoremap [A <C-@>k
-" tnoremap [B <C-@>j
+" tnoremap [D <C-g>h
+" tnoremap [C <C-g>l
+" tnoremap [A <C-g>k
+" tnoremap [B <C-g>j
+
+""""""""" windows clipboard
+" nmap <leader>c <Plug>OSCYankOperator
+" nmap <leader>cc <leader>c_
+" vmap <leader>c <Plug>OSCYankVisual
+
+" 可選：讓一般的 y 也自動複製到系統剪貼簿
+" autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '' | execute 'OSCYankRegister "' | endif
+
+
 

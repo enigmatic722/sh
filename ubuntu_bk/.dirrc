@@ -1,0 +1,3 @@
+alias lkey="v /home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/key_bindings.py"
+alias cdsh="cd /mnt/d/dev/linux"
+
