@@ -1,0 +1,232 @@
+2026-09-01 19:26:05,542 (778/completion_refresh) litecli.sqlcompleter ERROR - Failed to get function names.
+Traceback (most recent call last):
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlcompleter.py", line 371, in extend_functions
+    func_data = [self.escaped_names(d) for d in func_data]
+                                                ^^^^^^^^^
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlexecute.py", line 216, in functions
+    cur.execute(self.functions_query % self.dbname)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlean.dbapi2.OperationalError: no such table: INFORMATION_SCHEMA.ROUTINES
+2026-09-01 19:28:21,463 (872/completion_refresh) litecli.sqlcompleter ERROR - Failed to get function names.
+Traceback (most recent call last):
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlcompleter.py", line 371, in extend_functions
+    func_data = [self.escaped_names(d) for d in func_data]
+                                                ^^^^^^^^^
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlexecute.py", line 216, in functions
+    cur.execute(self.functions_query % self.dbname)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlean.dbapi2.OperationalError: no such table: INFORMATION_SCHEMA.ROUTINES
+2026-09-01 19:30:42,131 (872/MainThread) litecli.main ERROR - sql: '.q', error: OperationalError('near ".": syntax error')
+2026-09-01 19:30:42,136 (872/MainThread) litecli.main ERROR - traceback: 'Traceback (most recent call last):\n  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlexecute.py", line 146, in run\n    for result in special.execute(cur, sql):\n                  ~~~~~~~~~~~~~~~^^^^^^^^^^\n  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/packages/special/main.py", line 133, in execute\n    raise CommandNotFound\nlitecli.packages.special.main.CommandNotFound\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/main.py", line 530, in one_iteration\n    mutating = output_res(res, start)\n  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/main.py", line 414, in output_res\n    for title, cur, headers, status in res:\n                                       ^^^\n  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlexecute.py", line 154, in run\n    cur.execute(sql)\n    ~~~~~~~~~~~^^^^^\nsqlean.dbapi2.OperationalError: near ".": syntax error\n'
+2026-09-01 19:31:47,245 (3627/completion_refresh) litecli.sqlcompleter ERROR - Failed to get function names.
+Traceback (most recent call last):
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlcompleter.py", line 371, in extend_functions
+    func_data = [self.escaped_names(d) for d in func_data]
+                                                ^^^^^^^^^
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlexecute.py", line 216, in functions
+    cur.execute(self.functions_query % self.dbname)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlean.dbapi2.OperationalError: no such table: INFORMATION_SCHEMA.ROUTINES
+2026-09-01 19:34:18,115 (12241/completion_refresh) litecli.sqlcompleter ERROR - Failed to get function names.
+Traceback (most recent call last):
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlcompleter.py", line 371, in extend_functions
+    func_data = [self.escaped_names(d) for d in func_data]
+                                                ^^^^^^^^^
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlexecute.py", line 216, in functions
+    cur.execute(self.functions_query % self.dbname)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlean.dbapi2.OperationalError: no such table: INFORMATION_SCHEMA.ROUTINES
+2026-09-01 19:38:24,259 (12284/completion_refresh) litecli.sqlcompleter ERROR - Failed to get function names.
+Traceback (most recent call last):
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlcompleter.py", line 371, in extend_functions
+    func_data = [self.escaped_names(d) for d in func_data]
+                                                ^^^^^^^^^
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlexecute.py", line 216, in functions
+    cur.execute(self.functions_query % self.dbname)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlean.dbapi2.OperationalError: no such table: INFORMATION_SCHEMA.ROUTINES
+2026-09-01 19:38:36,404 (12295/completion_refresh) litecli.sqlcompleter ERROR - Failed to get function names.
+Traceback (most recent call last):
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlcompleter.py", line 371, in extend_functions
+    func_data = [self.escaped_names(d) for d in func_data]
+                                                ^^^^^^^^^
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlexecute.py", line 216, in functions
+    cur.execute(self.functions_query % self.dbname)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlean.dbapi2.OperationalError: no such table: INFORMATION_SCHEMA.ROUTINES
+2026-09-01 19:38:44,631 (12306/completion_refresh) litecli.sqlcompleter ERROR - Failed to get function names.
+Traceback (most recent call last):
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlcompleter.py", line 371, in extend_functions
+    func_data = [self.escaped_names(d) for d in func_data]
+                                                ^^^^^^^^^
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlexecute.py", line 216, in functions
+    cur.execute(self.functions_query % self.dbname)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlean.dbapi2.OperationalError: no such table: INFORMATION_SCHEMA.ROUTINES
+2026-09-01 19:38:50,225 (12306/MainThread) litecli.main ERROR - sql: 'klsldkfj', error: OperationalError('near "klsldkfj": syntax error')
+2026-09-01 19:38:50,228 (12306/MainThread) litecli.main ERROR - traceback: 'Traceback (most recent call last):\n  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlexecute.py", line 146, in run\n    for result in special.execute(cur, sql):\n                  ~~~~~~~~~~~~~~~^^^^^^^^^^\n  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/packages/special/main.py", line 133, in execute\n    raise CommandNotFound\nlitecli.packages.special.main.CommandNotFound\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/main.py", line 530, in one_iteration\n    mutating = output_res(res, start)\n  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/main.py", line 414, in output_res\n    for title, cur, headers, status in res:\n                                       ^^^\n  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlexecute.py", line 154, in run\n    cur.execute(sql)\n    ~~~~~~~~~~~^^^^^\nsqlean.dbapi2.OperationalError: near "klsldkfj": syntax error\n'
+2026-09-01 19:40:20,804 (12317/completion_refresh) litecli.sqlcompleter ERROR - Failed to get function names.
+Traceback (most recent call last):
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlcompleter.py", line 371, in extend_functions
+    func_data = [self.escaped_names(d) for d in func_data]
+                                                ^^^^^^^^^
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlexecute.py", line 216, in functions
+    cur.execute(self.functions_query % self.dbname)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlean.dbapi2.OperationalError: no such table: INFORMATION_SCHEMA.ROUTINES
+2026-09-01 19:47:14,282 (12525/completion_refresh) litecli.sqlcompleter ERROR - Failed to get function names.
+Traceback (most recent call last):
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlcompleter.py", line 371, in extend_functions
+    func_data = [self.escaped_names(d) for d in func_data]
+                                                ^^^^^^^^^
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlexecute.py", line 216, in functions
+    cur.execute(self.functions_query % self.dbname)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlean.dbapi2.OperationalError: no such table: INFORMATION_SCHEMA.ROUTINES
+2026-09-01 19:47:43,349 (12548/completion_refresh) litecli.sqlcompleter ERROR - Failed to get function names.
+Traceback (most recent call last):
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlcompleter.py", line 371, in extend_functions
+    func_data = [self.escaped_names(d) for d in func_data]
+                                                ^^^^^^^^^
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlexecute.py", line 216, in functions
+    cur.execute(self.functions_query % self.dbname)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlean.dbapi2.OperationalError: no such table: INFORMATION_SCHEMA.ROUTINES
+2026-09-01 19:48:18,854 (12560/completion_refresh) litecli.sqlcompleter ERROR - Failed to get function names.
+Traceback (most recent call last):
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlcompleter.py", line 371, in extend_functions
+    func_data = [self.escaped_names(d) for d in func_data]
+                                                ^^^^^^^^^
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlexecute.py", line 216, in functions
+    cur.execute(self.functions_query % self.dbname)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlean.dbapi2.OperationalError: no such table: INFORMATION_SCHEMA.ROUTINES
+2026-09-01 19:49:49,485 (12572/completion_refresh) litecli.sqlcompleter ERROR - Failed to get function names.
+Traceback (most recent call last):
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlcompleter.py", line 371, in extend_functions
+    func_data = [self.escaped_names(d) for d in func_data]
+                                                ^^^^^^^^^
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlexecute.py", line 216, in functions
+    cur.execute(self.functions_query % self.dbname)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlean.dbapi2.OperationalError: no such table: INFORMATION_SCHEMA.ROUTINES
+2026-09-01 19:53:34,317 (12655/completion_refresh) litecli.sqlcompleter ERROR - Failed to get function names.
+Traceback (most recent call last):
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlcompleter.py", line 371, in extend_functions
+    func_data = [self.escaped_names(d) for d in func_data]
+                                                ^^^^^^^^^
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlexecute.py", line 216, in functions
+    cur.execute(self.functions_query % self.dbname)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlean.dbapi2.OperationalError: no such table: INFORMATION_SCHEMA.ROUTINES
+2026-09-01 19:54:32,220 (12655/MainThread) litecli.main ERROR - sql: 'll', error: OperationalError('near "ll": syntax error')
+2026-09-01 19:54:32,225 (12655/MainThread) litecli.main ERROR - traceback: 'Traceback (most recent call last):\n  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlexecute.py", line 146, in run\n    for result in special.execute(cur, sql):\n                  ~~~~~~~~~~~~~~~^^^^^^^^^^\n  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/packages/special/main.py", line 133, in execute\n    raise CommandNotFound\nlitecli.packages.special.main.CommandNotFound\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/main.py", line 531, in one_iteration\n    mutating = output_res(res, start)\n  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/main.py", line 415, in output_res\n    for title, cur, headers, status in res:\n                                       ^^^\n  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlexecute.py", line 154, in run\n    cur.execute(sql)\n    ~~~~~~~~~~~^^^^^\nsqlean.dbapi2.OperationalError: near "ll": syntax error\n'
+2026-09-01 19:55:05,920 (12655/MainThread) litecli.main ERROR - sql: 'clear', error: OperationalError('near "clear": syntax error')
+2026-09-01 19:55:05,921 (12655/MainThread) litecli.main ERROR - traceback: 'Traceback (most recent call last):\n  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlexecute.py", line 146, in run\n    for result in special.execute(cur, sql):\n                  ~~~~~~~~~~~~~~~^^^^^^^^^^\n  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/packages/special/main.py", line 133, in execute\n    raise CommandNotFound\nlitecli.packages.special.main.CommandNotFound\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/main.py", line 531, in one_iteration\n    mutating = output_res(res, start)\n  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/main.py", line 415, in output_res\n    for title, cur, headers, status in res:\n                                       ^^^\n  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlexecute.py", line 154, in run\n    cur.execute(sql)\n    ~~~~~~~~~~~^^^^^\nsqlean.dbapi2.OperationalError: near "clear": syntax error\n'
+2026-09-01 19:55:07,589 (12655/MainThread) litecli.main ERROR - sql: 'clear;', error: OperationalError('near "clear": syntax error')
+2026-09-01 19:55:07,593 (12655/MainThread) litecli.main ERROR - traceback: 'Traceback (most recent call last):\n  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlexecute.py", line 146, in run\n    for result in special.execute(cur, sql):\n                  ~~~~~~~~~~~~~~~^^^^^^^^^^\n  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/packages/special/main.py", line 133, in execute\n    raise CommandNotFound\nlitecli.packages.special.main.CommandNotFound\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/main.py", line 531, in one_iteration\n    mutating = output_res(res, start)\n  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/main.py", line 415, in output_res\n    for title, cur, headers, status in res:\n                                       ^^^\n  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlexecute.py", line 154, in run\n    cur.execute(sql)\n    ~~~~~~~~~~~^^^^^\nsqlean.dbapi2.OperationalError: near "clear": syntax error\n'
+2026-09-01 19:55:14,294 (12655/MainThread) litecli.main ERROR - sql: 'cls', error: OperationalError('near "cls": syntax error')
+2026-09-01 19:55:14,298 (12655/MainThread) litecli.main ERROR - traceback: 'Traceback (most recent call last):\n  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlexecute.py", line 146, in run\n    for result in special.execute(cur, sql):\n                  ~~~~~~~~~~~~~~~^^^^^^^^^^\n  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/packages/special/main.py", line 133, in execute\n    raise CommandNotFound\nlitecli.packages.special.main.CommandNotFound\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/main.py", line 531, in one_iteration\n    mutating = output_res(res, start)\n  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/main.py", line 415, in output_res\n    for title, cur, headers, status in res:\n                                       ^^^\n  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlexecute.py", line 154, in run\n    cur.execute(sql)\n    ~~~~~~~~~~~^^^^^\nsqlean.dbapi2.OperationalError: near "cls": syntax error\n'
+2026-09-01 19:56:05,492 (12766/completion_refresh) litecli.sqlcompleter ERROR - Failed to get function names.
+Traceback (most recent call last):
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlcompleter.py", line 371, in extend_functions
+    func_data = [self.escaped_names(d) for d in func_data]
+                                                ^^^^^^^^^
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlexecute.py", line 216, in functions
+    cur.execute(self.functions_query % self.dbname)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlean.dbapi2.OperationalError: no such table: INFORMATION_SCHEMA.ROUTINES
+2026-09-01 20:30:19,141 (12766/MainThread) litecli.main ERROR - sql: 'select user_id, user_type, user_ip, user_name from phpbb_users;', error: OperationalError('no such column: user_name')
+2026-09-01 20:30:19,144 (12766/MainThread) litecli.main ERROR - traceback: 'Traceback (most recent call last):\n  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlexecute.py", line 146, in run\n    for result in special.execute(cur, sql):\n                  ~~~~~~~~~~~~~~~^^^^^^^^^^\n  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/packages/special/main.py", line 133, in execute\n    raise CommandNotFound\nlitecli.packages.special.main.CommandNotFound\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/main.py", line 531, in one_iteration\n    mutating = output_res(res, start)\n  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/main.py", line 415, in output_res\n    for title, cur, headers, status in res:\n                                       ^^^\n  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlexecute.py", line 154, in run\n    cur.execute(sql)\n    ~~~~~~~~~~~^^^^^\nsqlean.dbapi2.OperationalError: no such column: user_name\n'
+2026-09-01 21:13:58,304 (14477/completion_refresh) litecli.sqlcompleter ERROR - Failed to get function names.
+Traceback (most recent call last):
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlcompleter.py", line 371, in extend_functions
+    func_data = [self.escaped_names(d) for d in func_data]
+                                                ^^^^^^^^^
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlexecute.py", line 216, in functions
+    cur.execute(self.functions_query % self.dbname)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlean.dbapi2.OperationalError: no such table: INFORMATION_SCHEMA.ROUTINES
+2026-09-01 21:16:16,862 (14514/completion_refresh) litecli.sqlcompleter ERROR - Failed to get function names.
+Traceback (most recent call last):
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlcompleter.py", line 371, in extend_functions
+    func_data = [self.escaped_names(d) for d in func_data]
+                                                ^^^^^^^^^
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlexecute.py", line 216, in functions
+    cur.execute(self.functions_query % self.dbname)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlean.dbapi2.OperationalError: no such table: INFORMATION_SCHEMA.ROUTINES
+2026-09-01 21:19:09,707 (14551/completion_refresh) litecli.sqlcompleter ERROR - Failed to get function names.
+Traceback (most recent call last):
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlcompleter.py", line 371, in extend_functions
+    func_data = [self.escaped_names(d) for d in func_data]
+                                                ^^^^^^^^^
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlexecute.py", line 216, in functions
+    cur.execute(self.functions_query % self.dbname)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlean.dbapi2.OperationalError: no such table: INFORMATION_SCHEMA.ROUTINES
+2026-09-01 21:22:06,390 (14574/completion_refresh) litecli.sqlcompleter ERROR - Failed to get function names.
+Traceback (most recent call last):
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlcompleter.py", line 371, in extend_functions
+    func_data = [self.escaped_names(d) for d in func_data]
+                                                ^^^^^^^^^
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlexecute.py", line 216, in functions
+    cur.execute(self.functions_query % self.dbname)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlean.dbapi2.OperationalError: no such table: INFORMATION_SCHEMA.ROUTINES
+2026-09-01 21:27:29,466 (14655/completion_refresh) litecli.sqlcompleter ERROR - Failed to get function names.
+Traceback (most recent call last):
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlcompleter.py", line 371, in extend_functions
+    func_data = [self.escaped_names(d) for d in func_data]
+                                                ^^^^^^^^^
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlexecute.py", line 216, in functions
+    cur.execute(self.functions_query % self.dbname)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlean.dbapi2.OperationalError: no such table: INFORMATION_SCHEMA.ROUTINES
+2026-09-01 21:27:35,452 (14655/MainThread) litecli.main ERROR - sql: 'sldkfj', error: OperationalError('near "sldkfj": syntax error')
+2026-09-01 21:27:35,464 (14655/MainThread) litecli.main ERROR - traceback: 'Traceback (most recent call last):\n  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlexecute.py", line 146, in run\n    for result in special.execute(cur, sql):\n                  ~~~~~~~~~~~~~~~^^^^^^^^^^\n  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/packages/special/main.py", line 133, in execute\n    raise CommandNotFound\nlitecli.packages.special.main.CommandNotFound\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/main.py", line 531, in one_iteration\n    mutating = output_res(res, start)\n  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/main.py", line 415, in output_res\n    for title, cur, headers, status in res:\n                                       ^^^\n  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlexecute.py", line 154, in run\n    cur.execute(sql)\n    ~~~~~~~~~~~^^^^^\nsqlean.dbapi2.OperationalError: near "sldkfj": syntax error\n'
+2026-09-01 21:28:38,396 (14666/completion_refresh) litecli.sqlcompleter ERROR - Failed to get function names.
+Traceback (most recent call last):
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlcompleter.py", line 371, in extend_functions
+    func_data = [self.escaped_names(d) for d in func_data]
+                                                ^^^^^^^^^
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlexecute.py", line 216, in functions
+    cur.execute(self.functions_query % self.dbname)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlean.dbapi2.OperationalError: no such table: INFORMATION_SCHEMA.ROUTINES
+2026-09-01 21:29:03,844 (14677/completion_refresh) litecli.sqlcompleter ERROR - Failed to get function names.
+Traceback (most recent call last):
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlcompleter.py", line 371, in extend_functions
+    func_data = [self.escaped_names(d) for d in func_data]
+                                                ^^^^^^^^^
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlexecute.py", line 216, in functions
+    cur.execute(self.functions_query % self.dbname)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlean.dbapi2.OperationalError: no such table: INFORMATION_SCHEMA.ROUTINES
+2026-09-01 21:32:46,656 (14714/completion_refresh) litecli.sqlcompleter ERROR - Failed to get function names.
+Traceback (most recent call last):
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlcompleter.py", line 371, in extend_functions
+    func_data = [self.escaped_names(d) for d in func_data]
+                                                ^^^^^^^^^
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlexecute.py", line 216, in functions
+    cur.execute(self.functions_query % self.dbname)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlean.dbapi2.OperationalError: no such table: INFORMATION_SCHEMA.ROUTINES
+2026-09-01 21:35:27,662 (14740/completion_refresh) litecli.sqlcompleter ERROR - Failed to get function names.
+Traceback (most recent call last):
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlcompleter.py", line 371, in extend_functions
+    func_data = [self.escaped_names(d) for d in func_data]
+                                                ^^^^^^^^^
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlexecute.py", line 216, in functions
+    cur.execute(self.functions_query % self.dbname)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlean.dbapi2.OperationalError: no such table: INFORMATION_SCHEMA.ROUTINES
+2026-09-04 21:43:11,307 (508/completion_refresh) litecli.sqlcompleter ERROR - Failed to get function names.
+Traceback (most recent call last):
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlcompleter.py", line 371, in extend_functions
+    func_data = [self.escaped_names(d) for d in func_data]
+                                                ^^^^^^^^^
+  File "/home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/sqlexecute.py", line 216, in functions
+    cur.execute(self.functions_query % self.dbname)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlean.dbapi2.OperationalError: no such table: INFORMATION_SCHEMA.ROUTINES

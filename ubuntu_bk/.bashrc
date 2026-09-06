@@ -136,8 +136,8 @@ bind -m vi-command '"\C-d":nop'
 bind '"\C-a":"\e[H"' # home
 bind '"\C-e":"\e[F"' # end
 
-bind '"\eh": backward-word'
-bind '"\el": forward-word'
+# bind '"\eh": backward-word'
+# bind '"\el": forward-word'
 
 # If there are multiple matches for completion, Tab should cycle through them
 bind 'TAB:menu-complete'
@@ -187,8 +187,8 @@ np() {
 
 # alias :q='exit'
 alias c='clip.exe'
-alias lrc='v /home/emanon/.config/litecli/config'
-alias lkey='v /home/emanon/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/key_bindings.py'
+alias lrc='v ~/.config/litecli/config'
+alias lkey='v ~/.local/share/pipx/venvs/litecli/lib/python3.14/site-packages/litecli/key_bindings.py'
 alias k='kubectl'
 alias ii='explorer.exe'
 alias t='tmux'
@@ -199,12 +199,15 @@ alias ca='keytool -list -v -keystore /etc/pki/ca-trust/extracted/java/cacerts -s
 alias v='vim'
 # alias vt="vim -c ':term ++curwin' -c 'vnew' -c ':term ++curwin'"
 alias vt="vim -u ~/.termrc -c ':term ++curwin' -c ':vert term' -c ':file bash2' -c ':wincmd w'"
-alias als='v ~/.bashrc'
+alias als='v /mnt/d/dev/linux/ubuntu_bk/.bashrc'
+alias re='cp /mnt/d/dev/linux/ubuntu_bk/.bashrc ~/.bashrc; source ~/.bashrc'
+alias bkt='cp ~/.tmux.conf /mnt/d/dev/linux/ubuntu_bk/'
 # alias als='v ~/.tmprc'
 alias alsdir='v ~/.dirrc'
 alias vrc='v ~/.vimrc'
-alias trc='v ~/.termrc'
-alias re='source ~/.bashrc'
+alias bkv='cp ~/.vimrc /mnt/d/dev/linux/ubuntu_bk/'
+alias trc='v ~/.tmux.conf'
+alias bkt='cp ~/.tmux.conf /mnt/d/dev/linux/ubuntu_bk/'
 # alias re='source ~/.tmprc'
 alias l='less -N'
 alias bn='basename'

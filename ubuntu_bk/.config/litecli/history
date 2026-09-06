@@ -1,0 +1,182 @@
+
+# 2026-09-01 19:28:31.428022
++.tables;
+
+# 2026-09-01 19:28:45.311151
++.tables
+
+# 2026-09-01 19:29:34.295504
++\d
+
+# 2026-09-01 19:30:42.127783
++.q
+
+# 2026-09-01 19:30:47.572799
++.databases
+
+# 2026-09-01 19:31:03.931760
++.tables
+
+# 2026-09-01 19:38:50.221180
++klsldkfj
+
+# 2026-09-01 19:47:18.276797
++.tables
+
+# 2026-09-01 19:54:22.830396
++select * from phpbb_users;
+
+# 2026-09-01 19:54:32.213434
++ll
+
+# 2026-09-01 19:54:38.018694
++.tables
+
+# 2026-09-01 19:55:05.916419
++clear
+
+# 2026-09-01 19:55:07.583563
++clear;
+
+# 2026-09-01 19:55:12.600756
++.shell clear;
+
+# 2026-09-01 19:55:14.288513
++cls
+
+# 2026-09-01 19:55:32.085831
++.tables
+
+# 2026-09-01 19:56:12.969330
++select * from phpbb_acl_users;
+
+# 2026-09-01 20:21:07.021182
++PRAGMA table_info(phpbb_users);
++
+
+# 2026-09-01 20:22:26.445024
++SELECT name FROM pragma_table_info('phpbb_users');
++
+
+# 2026-09-01 20:25:19.021174
++system pwd;
+
+# 2026-09-01 20:25:35.603162
++.once users.name.txt;
+
+# 2026-09-01 20:26:21.456249
++PRAGMA table_info(phpbb_users);
+
+# 2026-09-01 20:26:36.443650
++select * from phpbb_acl_users;
+
+# 2026-09-01 20:28:43.772780
++.once tables.txt;
+
+# 2026-09-01 20:28:48.001352
++.tables;
+
+# 2026-09-01 20:30:19.128214
++select user_id, user_type, user_ip, user_name from phpbb_users;
+
+# 2026-09-01 20:30:29.973715
++select user_id, user_type, user_ip, username from phpbb_users;
+
+# 2026-09-01 20:36:27.277691
++select * from phpbb_log;
+
+# 2026-09-01 20:37:21.843314
++select user_id, user_type, user_ip, username from phpbb_users;
+
+# 2026-09-01 20:45:38.943589
++select * from phpbb_posts;
+
+# 2026-09-01 20:46:24.326237
++PRAGMA table_info(phpbb_posts);
+
+# 2026-09-01 20:47:48.163844
++.once post.md;
+
+# 2026-09-01 20:47:51.380841
++select * from phpbb_posts;
+
+# 2026-09-01 20:59:40.566663
++.once phpbb_log.log;
+
+# 2026-09-01 20:59:47.317047
++select * from phpbb_log;
+
+# 2026-09-01 21:03:38.394352
++select * from phpbb_sessions;
+
+# 2026-09-01 21:04:51.013392
++.once session.log;
+
+# 2026-09-01 21:04:55.075901
++select * from phpbb_sessions;
+
+# 2026-09-01 21:11:17.964075
++\f+
+
+# 2026-09-01 21:11:42.287281
++select * from phpbb_sessions \G
+
+# 2026-09-01 21:12:27.489414
++select * from phpbb_posts \G
+
+# 2026-09-01 21:27:35.445533
++sldkfj
+
+# 2026-09-01 21:32:56.936882
++select * from phpbb_posts;
+
+# 2026-09-01 21:35:43.326895
++select * from phpbb_posts \G
+
+# 2026-09-01 21:36:09.855355
++.once post_full.md;
+
+# 2026-09-01 21:36:11.182262
++select * from phpbb_posts \G
+
+# 2026-09-01 21:50:16.943932
++select * from phpbb_login_attempts;
+
+# 2026-09-01 21:50:22.884202
++select * from phpbb_posts \G
+
+# 2026-09-01 21:50:59.130968
++select * from phpbb_log;
+
+# 2026-09-01 21:51:48.610295
++select * from phpbb_oauth_tokens;
+
+# 2026-09-01 21:51:58.780068
++select * from phpbb_sessions;
+
+# 2026-09-01 21:52:26.567762
++select * from phpbb_user_notifications;
+
+# 2026-09-01 21:54:35.766185
++select * from phpbb_acl_roles;
+
+# 2026-09-01 21:55:11.586378
++select * from phpbb_acl_users;
+
+# 2026-09-01 21:55:35.751850
++select * from phpbb_forums_access;
+
+# 2026-09-01 21:55:43.582629
++select * from phpbb_forums_track;
+
+# 2026-09-01 22:00:19.122593
++select * from phpbb_config;
+
+# 2026-09-01 22:02:10.746059
++select * from phpbb_log;
+
+# 2026-09-04 21:43:15.825572
++.tables
+
+# 2026-09-04 21:43:21.540378
++select * from purchases;

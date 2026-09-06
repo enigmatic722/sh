@@ -6,8 +6,10 @@ set backspace=indent,eol,start
 
 let g:mapleader=" "
 
-let &t_SI.="\e[5 q" "SI = INSERT mode
-let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
+" let &t_SI.="\e[5 q" "SI = INSERT mode
+" let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
+set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+
 
 " disable commentary new line auto
 
@@ -37,7 +39,7 @@ set smartindent
 filetype plugin indent on 
 
 set mouse=a
-set ttymouse=sgr
+" set ttymouse=sgr
 " if has("mouse_sgr")
 "   set ttymouse=sgr
 " else
@@ -876,7 +878,7 @@ nnoremap <C-w><C-[> gT
 
 inoremap <C-\> \|\|<Left>
 
-set termwinkey=<C-g>
+" set termwinkey=<C-g>
 tnoremap <C-j> <C-j>
 tnoremap <C-j> <Down>
 " tnoremap <Esc><Esc> <C-g>N
@@ -998,21 +1000,21 @@ function! s:TermForceCloseAll() abort
   endfor
 endfunction
 
-" nnoremap [D <C-w>h
-" nnoremap [C <C-w>l
-" nnoremap [A <C-w>k
-" nnoremap [B <C-w>j
+" nnoremap ␛[D <C-w>h
+" nnoremap ␛[C <C-w>l
+" nnoremap ␛[A <C-w>k
+" nnoremap ␛[B <C-w>j
 
-" inoremap [D <C-o><C-w>h
-" inoremap [C <C-o><C-w>l
-" inoremap [A <C-o><C-w>k
-" inoremap [B <C-o><C-w>j
+" inoremap ␛[D <C-o><C-w>h
+" inoremap ␛[C <C-o><C-w>l
+" inoremap ␛[A <C-o><C-w>k
+" inoremap ␛[B <C-o><C-w>j
 
 
-" tnoremap [D <C-g>h
-" tnoremap [C <C-g>l
-" tnoremap [A <C-g>k
-" tnoremap [B <C-g>j
+" tnoremap ␛[D <C-g>h
+" tnoremap ␛[C <C-g>l
+" tnoremap ␛[A <C-g>k
+" tnoremap ␛[B <C-g>j
 
 """"""""" windows clipboard
 " nmap <leader>c <Plug>OSCYankOperator
@@ -1021,6 +1023,8 @@ endfunction
 
 " 可選：讓一般的 y 也自動複製到系統剪貼簿
 " autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '' | execute 'OSCYankRegister "' | endif
+
+
 
 
 

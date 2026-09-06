@@ -1,0 +1,9 @@
+cp /home/tm123/Desktop/my_data/.bashrc ~/.bashrc
+cp /home/tm123/Desktop/my_data/.inputrc ~/.inputrc
+cp /home/tm123/Desktop/my_data/.tmux.conf ~/.tmux.conf
+
+mkdir -p ~/.config/nvim/
+cp -r /home/tm123/Desktop/my_data/init.vim ~/.config/nvim/
+cp -r /home/tm123/Desktop/my_data/.vim/* ~/.config/nvim/
+
+mate-terminal --maximize
